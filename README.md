@@ -12,3 +12,5 @@
 | [Lucas Alves Vilela](https://github.com/LucasV75) | Programação em C, Engenharia de software |
 | [Carlos Eduardo Souza](https://github.com/Carlos-E-Souza) | Programação Web, Modelagem de banco de dados |
 | [Heitor Braz Reino](https://github.com/Totz1) | Sistemas Computacionais |
+# Observações
+  O código em .c foi desenvolvido no Visual Studio Code mas disponibilizei uma segunda versão para ser rodada no Dev-C++.
