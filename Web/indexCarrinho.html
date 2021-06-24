@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url('https://images.hdqwalls.com/download/pizza-baked-chesse-spicy-7t-5120x2880.jpg');
+            background-position: center;
+            background-size: cover;
+        }
+
+        /*---------Menu de Navegação---------*/
+        nav {
+            display: flex;
+            padding: 2% 4%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav img {
+            width: 135px;
+        }
+
+        .nav-links {
+            flex: 1;
+            text-align: right;
+        }
+
+        .nav-links ul li {
+            list-style: none;
+            display: inline-block;
+            padding: 8px 12px;
+            position: relative;
+        }
+
+        .nav-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .nav-links ul li a img {
+            filter: invert(100%) sepia(5%) saturate(1250%) hue-rotate(183deg) brightness(121%) contrast(100%);
+            height: 20px;
+            width: 28px;
+        }
+
+        .nav-links ul li::after {
+            content: '';
+            width: 0%;
+            height: 2px;
+            background: #f44336;
+            display: block;
+            margin: auto;
+            transition: .5s;
+        }
+
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+
+        nav .fa {
+            display: none;
+        }
+
+        /*---------Área do carrinho---------*/
+        .btn {
+            display: inline-block;
+            background: #ff523b;
+            color: #fff;
+            padding: 8px 30px;
+            margin: 30px 0;
+            border-radius: 30px;
+            transition: background 0.5s;
+        }
+
+        .btn:hover {
+            background: #563434;
+        }
+
+        .carrinho {
+            margin: 5px;
+            color: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .carrinho_info {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        th {
+            text-align: left;
+            padding: 5px;
+            color: #fff;
+            background: #ff523b;
+            font-weight: normal;
+        }
+
+        td {
+            padding: 10px 5px;
+        }
+
+        td input {
+            width: 40px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        td a {
+            color: #ff523b;
+            font-size: 12px;
+        }
+
+        td img {
+            width: 80px;
+            height: 80px;
+            margin-right: 10px;
+        }
+
+        .preco_total {
+            display: flex;
+            justify-content: flex-end;
+
+        }
+
+        .preco_total table {
+            border-top: 3px solid #ff523b;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        td:last-child {
+            text-align: right;
+        }
+
+        th:last-child {
+            text-align: right;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .carrinho_info p {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <div class="nav-links" id="navLinks">
+                <ul>
+                    <li><a href="http://localhost:8000/menu">HOME</a></li>
+                    <li><a href="http://localhost:8000/login">LOGIN</a></li>
+                    <li><a href="http://localhost:8000/login">CADASTRO</a></li>
+                    <li><a href="http://localhost:8000/produtos">PRODUTOS</a></li>
+                    <li><a href="http://localhost:8000/menu#contatos">CONTACT</a></li>
+                    <li><a href="http://localhost:8000/carrinho"><img
+                                src="https://img.icons8.com/material-rounded/24/000000/shopping-cart.png">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <div class="container carrinho">
+        <table>
+            <tr>
+                <th>Produtos</th>
+                <th>Quantidade</th>
+                <th>Subtotal</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="carrinho_info">
+                        <img
+                            src="https://t1.rg.ltmcdn.com/pt/images/9/8/3/img_pizza_calabresa_e_mussarela_4389_orig.jpg">
+                        <div>
+                            <p>Pizza Calabresa</p>
+                            <small>Preço: R$25.00</small><br>
+                            <a href="">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="1"></td>
+                <td>R$25.00</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="carrinho_info">
+                        <img
+                            src="https://abcemcasa.vteximg.com.br/arquivos/ids/285307-1000-1000/REFRIG-PET-COCA-COLA-2L.jpg?v=637290994087870000">
+                        <div>
+                            <p>Coca-cola 2L</p>
+                            <small>Preço: R$10.00</small><br>
+                            <a href="">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="1"></td>
+                <td>R$10.00</td>
+            </tr>
+        </table>
+
+        <div class="preco_total">
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>R$35.00</td>
+                </tr>
+                <tr>
+                    <td>Tax de entrega</td>
+                    <td>R$10.00</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>R$45.00</td>
+                </tr>
+            </table>
+        </div>
+        <div class="preco_total">
+            <a href="#" class="btn">Prosseguir para pagamento &#8594;</a>
+        </div>
+    </div>
+</body>
+
+</html>

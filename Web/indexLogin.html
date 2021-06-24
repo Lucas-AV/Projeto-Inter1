@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" containerent="IE=edge">
+    <meta name="viewport" containerent="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <style>
+        *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #333;
+        }
+
+        input,
+        button {
+            border: none;
+            outline: none;
+            background: none;
+            font-family: 'Poppin', sans-serif;
+        }
+
+        .tip {
+            font-size: 20px;
+            margin: 40px auto 50px;
+            text-align: center;
+        }
+
+        .container {
+            overflow: hidden;
+            position: relative;
+            width: 900px;
+            height: 600px;
+            margin: 100px auto 100px;
+            background: #fff;
+
+        }
+
+        .form {
+            position: relative;
+            width: 640px;
+            height: 100%;
+            -webkit-transition: -webkit-transform 1.2s ease-in-out;
+            transition: -webkit-transform 1.2s ease-in-out;
+            transition: transform 1.2s ease-in-out;
+            transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+            padding: 50px 30px 0;
+        }
+
+        .sub_container {
+            overflow: hidden;
+            position: absolute;
+            left: 640px;
+            top: 0;
+            width: 900px;
+            height: 100%;
+            padding-left: 260px;
+            background: #fff;
+            -webkit-transition: -webkit-transform 1.2s ease-in-out;
+            transition: -webkit-transform 1.2s ease-in-out;
+            transition: transform 1.2s ease-in-out;
+            transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+        }
+
+        .container.troca_cont .sub_container {
+            -webkit-transform: translate3d(-640px, 0, 0);
+            transform: translate3d(-640px, 0, 0);
+        }
+
+        button {
+            display: block;
+            margin: 0 auto;
+            width: 260px;
+            height: 36px;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .img {
+            overflow: hidden;
+            z-index: 2;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 260px;
+            height: 100%;
+            padding-top: 360px;
+        }
+
+        .img:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 900px;
+            height: 100%;
+            background-image: url("https://images.hdqwalls.com/download/pizza-baked-chesse-spicy-7t-5120x2880.jpg");
+            background-size: cover;
+            -webkit-transition: -webkit-transform 1.2s ease-in-out;
+            transition: -webkit-transform 1.2s ease-in-out;
+            transition: transform 1.2s ease-in-out;
+            transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+        }
+
+        .img:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .container.troca_cont .img:before {
+            -webkit-transform: translate3d(640px, 0, 0);
+            transform: translate3d(640px, 0, 0);
+        }
+
+        .img_text {
+            z-index: 2;
+            position: absolute;
+            left: 0;
+            top: 50px;
+            width: 100%;
+            padding: 0 20px;
+            text-align: center;
+            color: #fff;
+            -webkit-transition: -webkit-transform 1.2s ease-in-out;
+            transition: -webkit-transform 1.2s ease-in-out;
+            transition: transform 1.2s ease-in-out;
+            transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+        }
+
+        .img_text h2 {
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+
+        .img_text p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .container.troca_cont .img_text.log_in {
+            -webkit-transform: translateX(520px);
+            transform: translateX(520px);
+        }
+
+        .img_text.cadastro {
+            -webkit-transform: translateX(-520px);
+            transform: translateX(-520px);
+        }
+
+        .container.troca_cont .img_text.cadastro {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+
+        .img_btn {
+            overflow: hidden;
+            z-index: 2;
+            position: relative;
+            width: 100px;
+            height: 36px;
+            margin: 0 auto;
+            background: transparent;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .img_btn:after {
+            content: '';
+            z-index: 2;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #fff;
+            border-radius: 30px;
+        }
+
+        .img_btn span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            -webkit-transition: -webkit-transform 1.2s;
+            transition: -webkit-transform 1.2s;
+            transition: transform 1.2s;
+            transition: transform 1.2s, -webkit-transform 1.2s;
+        }
+
+        .img_btn span.cadastro {
+            -webkit-transform: translateY(-72px);
+            transform: translateY(-72px);
+        }
+
+        .container.troca_cont .img_btn span.cadastro {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        .container.troca_cont .img_btn span.log_in {
+            -webkit-transform: translateY(72px);
+            transform: translateY(72px);
+        }
+
+        h2 {
+            width: 100%;
+            font-size: 26px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            width: 260px;
+            margin: 25px auto 0;
+            text-align: center;
+        }
+
+        label span {
+            font-size: 12px;
+            color: #cfcfcf;
+            text-transform: uppercase;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            margin-top: 5px;
+            padding-bottom: 5px;
+            font-size: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+
+        .esqueceu_senha {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #cfcfcf;
+        }
+
+        .enviar {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            background: #d4af7a;
+            text-transform: uppercase;
+        }
+
+        .fb-btn {
+            border: 2px solid #d3dae9;
+            color: #8fa1c7;
+        }
+
+        .fb-btn span {
+            font-weight: bold;
+            color: #455a81;
+        }
+
+        .login {
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+            margin-top: 100px;
+        }
+
+        .container.troca_cont .login {
+            -webkit-transition-timing-function: ease-in-out;
+            transition-timing-function: ease-in-out;
+            -webkit-transition-duration: 1.2s;
+            transition-duration: 1.2s;
+            -webkit-transform: translate3d(640px, 0, 0);
+            transform: translate3d(640px, 0, 0);
+        }
+
+        .cadastro {
+            -webkit-transform: translate3d(-900px, 0, 0);
+            transform: translate3d(-900px, 0, 0);
+        }
+
+        .container.troca_cont .cadastro {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        .form .login .show_password {
+            position: absolute;
+            left: 150px;
+            bottom: 50px;
+            line-height: 60px;
+            color: #9d9d9d;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .form .cadastro .show_password .cadastro {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form login">
+            <h2>Bem vindo</h2>
+            <label>
+                <span>Email</span>
+                <input type="email" id="email_login" required />
+            </label>
+            <label>
+                <span>Senha</span>
+                <input type="password" id="senha_login" required />
+                <div class="show_password fas fa-eye-slash"></div>
+            </label>
+            <p class="esqueceu_senha">Esqueceu a senha</p>
+            <button type="button" class="enviar" id="btn_login">Login</button>
+        </div>
+        <div class="sub_container">
+            <div class="img">
+                <div class="img_text log_in">
+                    <h2>Novo por aqui?</h2>
+                    <p>Cadastre-se para pedir e obter descontos!</p>
+                </div>
+                <div class="img_text cadastro">
+                    <h2>Já possui uma conta?</h2>
+                    <p>Se você já possui uma conta, apenas faça o login!</p>
+                </div>
+                <div class="img_btn">
+                    <span class="log_in">Cadastro</span>
+                    <span class="cadastro">Login</span>
+                </div>
+            </div>
+            <div class="form cadastro">
+                <h2>Cadastro</h2>
+                <label>
+                    <span>Nome Completo</span>
+                    <input type="text" id="nome_cadastro" required />
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" id="email_cadastro" required />
+                </label>
+                <label>
+                    <span>Senha</span>
+                    <input type="password" id="senha_cadastro" required />
+                </label>
+                <label>
+                    <span>CPF</span>
+                    <input type="number" id="cpf_cadastro" required />
+                </label>
+                <label>
+                    <span>Telefone</span>
+                    <input type="tel" placeholder="(ddd) 98172-6456" pattern="([0-9]{2}) 9[0-9]{4}-[0-9]{4}"
+                        id="tel_cadastro" required />
+                </label>
+                <label>
+                    <span>Endereço</span>
+                    <input type="text" id="endereco_cadastro" required />
+                </label>
+                <button type="button" class="enviar" id="btn_cadastro">Cadastrar-se</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        //troca o conteúdo exibido entre o login e cadastro
+        document.querySelector('.img_btn').addEventListener('click', function () {
+            document.querySelector('.container').classList.toggle('troca_cont');
+        });
+        //Verificação para entrar na área administrativa
+        document.querySelector('#btn_login').addEventListener('click', function () {
+            let email = document.querySelector('#email_login').value;
+            let senha = document.querySelector('#senha_login').value;
+            if (email == 'adm@gmail.com' && senha == 123456) {
+                window.location.href = 'http://localhost:8000/adm'
+            }
+
+        });
+        //Função para exibir e esconder a senha na área de login
+        document.querySelector(".show_password").addEventListener("click", function () {
+            let senha = document.querySelector('#senha_login');
+            if (this.classList[2] == "fa-eye-slash") {
+                this.classList.remove("fa-eye-slash");
+                this.classList.add("fa-eye");
+                senha.type = "text";
+            } else {
+                this.classList.remove("fa-eye");
+                this.classList.add("fa-eye-slash");
+                senha.type = "password";
+            }
+        });
+        //Alerta na tela para verificar informações enviadas no cadastro
+        document.querySelector('#btn_cadastro').addEventListener('click', function () {
+            let email = document.querySelector('#email_cadastro').value;
+            let nome = document.querySelector('#nome_cadastro').value;
+            let cpf = document.querySelector('#cpf_cadastro').value;
+            let senha = document.querySelector('#senha_cadastro').value;
+            let telefone = document.querySelector('#tel_cadastro').value;
+            let endereco = document.querySelector('#endereco_cadastro').value;
+            confirm(`As informações a seguir estão corretas?\nNome: ${nome}\nEmail: ${email}\nCPF: ${cpf}\nTelefone: ${telefone}\nEndereço: ${endereco}`)
+        })
+    </script>
+</body>
+
+</html>

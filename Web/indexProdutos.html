@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /*---------Menu de navegação---------*/
+        .header {
+            min-height: 100vh;
+            width: 100%;
+            background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url('https://images.hdqwalls.com/download/pizza-baked-chesse-spicy-7t-5120x2880.jpg');
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav {
+            display: flex;
+            padding: 2% 4%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav img {
+            width: 135px;
+        }
+
+        .nav-links {
+            flex: 1;
+            text-align: right;
+        }
+
+        .nav-links ul li {
+            list-style: none;
+            display: inline-block;
+            padding: 8px 12px;
+            position: relative;
+        }
+
+        .nav-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .nav-links ul li a img {
+            filter: invert(100%) sepia(5%) saturate(1250%) hue-rotate(183deg) brightness(121%) contrast(100%);
+            height: 20px;
+            width: 28px;
+        }
+
+        .nav-links ul li::after {
+            content: '';
+            width: 0%;
+            height: 2px;
+            background: #f44336;
+            display: block;
+            margin: auto;
+            transition: .5s;
+        }
+
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+
+        nav .fa {
+            display: none;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .header .row {
+            margin-top: 70px;
+        }
+
+        .col-2 {
+            flex-basis: 50%;
+            min-width: 300px;
+        }
+
+        .col-2 img {
+            max-width: 100%;
+            padding: 50px 0;
+        }
+
+        .col-2 h1 {
+            font-size: 50px;
+            line-height: 60px;
+            margin: 25px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff523b;
+            color: #fff;
+            padding: 8px 30px;
+            margin: 30px 0;
+            border-radius: 30px;
+            transition: background 0.5s;
+        }
+
+        .btn:hover {
+            background: #563434;
+        }
+
+        /*---------Categorias----------*/
+        .categories {
+            margin: 70px 0;
+        }
+
+        .small-container {
+            max-width: 1080px;
+            margin: auto;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .col-3 {
+            flex-basis: 30%;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .col-3 img {
+            width: 100%;
+        }
+
+        /*---------Menu de navegação---------*/
+
+        .title {
+            text-align: center;
+            margin: 0px auto 80px;
+            position: relative;
+            line-height: 60px;
+            color: #555;
+        }
+
+        .title::after {
+            content: '';
+            background: #ff523b;
+            width: 80px;
+            height: 5px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .col-4 {
+            flex-basis: 25%;
+            padding: 10px;
+            min-width: 200px;
+            margin-bottom: 50px;
+            transition: transform 0.5s;
+            border: 2px solid rgba(255, 119, 69, 0.699);
+            border-radius: 5px;
+        }
+
+        .col-4 img {
+            width: 270px;
+            height: 250px;
+        }
+
+        h4 {
+            color: #555;
+            font-weight: normal;
+        }
+
+        .col-4 p {
+            font-size: 14px;
+        }
+
+        .rating .fa {
+            color: #ff523b;
+        }
+
+        .col-4:hover {
+            transform: translateY(-5px);
+        }
+
+        @media only screen and (max-width: 800px) {
+
+            nav ul {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #333;
+                width: 100%;
+                overflow: hidden;
+                transition: 1s;
+                max-height: 0;
+                transition: max-height 0.5s;
+            }
+
+            nav ul li {
+                display: block;
+                margin-right: 50px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            nav ul li a {
+                color: #fff;
+            }
+
+            .menu-icon {
+                display: block;
+                cursor: pointer;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+
+            .row {
+                text-align: center;
+            }
+
+            .col-1,
+            .col-2,
+            .col-3,
+            .col-4 {
+
+                flex-basis: 100%;
+            }
+        }
+
+        /*----------Área dos produtos------------*/
+
+        .row-2 {
+            justify-content: space-between;
+            margin: 100px auto 50px;
+        }
+
+        select {
+            border: 1px solid #ff523b;
+            padding: 5px;
+        }
+
+        select:focus {
+            outline: none;
+        }
+
+        .page-btn {
+            margin: 0 auto 80px;
+        }
+
+        .page-btn span {
+            display: inline-block;
+            border: 1px solid #ff523b;
+            margin-left: 10px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+        }
+
+        .page-btn span:hover {
+            background: #ff523b;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <div class="nav-links" id="navLinks">
+                <ul>
+                    <li><a href="http://localhost:8000/menu">HOME</a></li>
+                    <li><a href="http://localhost:8000/login">LOGIN</a></li>
+                    <li><a href="http://localhost:8000/login">CADASTRO</a></li>
+                    <li><a href="http://localhost:8000/produtos">PRODUTOS</a></li>
+                    <li><a href="http://localhost:8000/menu#contatos">CONTACT</a></li>
+                    <li><a href="http://localhost:8000/carrinho"><img
+                                src="https://img.icons8.com/material-rounded/24/000000/shopping-cart.png"></a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </section>
+
+    <div class="small-container">
+        <div class="row row-2">
+            <h2>Todos os produtos</h2>
+            <select>
+                <option>Organizar por</option>
+                <option>Preço</option>
+                <option>Popularidade</option>
+                <option>Nota</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <a href="http://localhost:8000/carrinho"><img
+                        src="https://t1.rg.ltmcdn.com/pt/images/9/8/3/img_pizza_calabresa_e_mussarela_4389_orig.jpg"></a>
+                <h4><a>Pizza Calabresa</a></h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$25.00</p>
+            </div>
+            <div class="col-4">
+                <img src="https://i.pinimg.com/736x/7b/55/23/7b55236e17372bcb1315610c439cb0cb.jpg">
+                <h4>Pizza Frango com Catupiry</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <p>R$26.00</p>
+            </div>
+            <div class="col-4">
+                <img src="https://img.cybercook.com.br/receitas/550/pizza-pan-4-queijos-2.png">
+                <h4>Pizza 4 Queijos</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <p>R$25.00</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <img
+                    src="https://coolicias.ao/wp-content/uploads/2019/10/Pizza-deliciosa-Portuguesa-muito-F%C3%A1cil.jpg">
+                <h4>Pizza Portuguesa</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$25.00</p>
+            </div>
+            <div class="col-4">
+                <img src="http://o.imgac.net/receita/pizza-marguerita-34328.jpg">
+                <h4>Pizza Marguerita</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$25.00</p>
+            </div>
+            <div class="col-4">
+                <img src="https://www.receiteria.com.br/wp-content/uploads/receitas-de-pizza-de-pepperoni-0.jpg">
+                <h4>Pizza Pepperoni</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <p>R$25.00</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <img src="https://media-cdn.tripadvisor.com/media/photo-s/0f/07/37/e2/pizza-banana-com-canela.jpg">
+                <h4>Pizza Banana</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <p>R$25.00</p>
+            </div>
+            <div class="col-4">
+                <img
+                    src="https://www.goomer.app/webmenu/pizzaria-rei-davi-assu/product/1054355/picture/medium/210131195039">
+                <h4>Pizza Chocolate</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$20.00</p>
+            </div>
+            <div class="col-4">
+                <img
+                    src="https://www.academiaassai.com.br/sites/default/files/styles/noticia_1020x640/public/sabores_de_pizza_morango_com_chocolate.jpg?itok=DlQsbz89">
+                <h4>Pizza Chocolate com Morango</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>R$30.00</p>
+            </div>
+        </div>
+
+        <div class="page-btn">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>&#8594;</span>
+        </div>
+    </div>
+</body>
+
+</html>

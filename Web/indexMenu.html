@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /*---------Menu de navegação---------*/
+        .header {
+            min-height: 100vh;
+            width: 100%;
+            background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url('https://images.hdqwalls.com/download/pizza-baked-chesse-spicy-7t-5120x2880.jpg');
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav {
+            display: flex;
+            padding: 2% 4%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav img {
+            max-width: 100%;
+        }
+
+        .nav-links {
+            flex: 1;
+            text-align: right;
+        }
+
+        .nav-links ul li {
+            list-style: none;
+            display: inline-block;
+            padding: 8px 12px;
+            position: relative;
+        }
+
+        .nav-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .nav-links ul li::after {
+            content: '';
+            width: 0%;
+            height: 2px;
+            background: #f44336;
+            display: block;
+            margin: auto;
+            transition: .5s;
+        }
+
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+
+        nav .fa {
+            display: none;
+        }
+
+        .text_box {
+            width: 90%;
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .text_box h1 {
+            font-size: 62px;
+        }
+
+        .text_box p {
+            margin: 20px 0 40px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .peca_btn {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 12px 34px;
+            font-size: 13px;
+            background: transparent;
+            position: relative;
+            cursor: pointer;
+            transition: 1s;
+        }
+
+        .peca_btn:hover {
+            border: 1px solid #f44336;
+            background: #f44336;
+        }
+
+
+        @media(max-width: 700px) {
+            .nav-links ul li {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                background: #f44336;
+                height: 100vh;
+                width: 200px;
+                top: 0;
+                right: -200px;
+                text-align: left;
+                z-index: 2;
+                transition: 0.5s;
+            }
+
+            .nav-links ul {
+                padding: 30px;
+            }
+
+            nav .fa {
+                display: block;
+                color: #fff;
+                margin: 10px;
+                font-size: 22px;
+                cursor: pointer;
+            }
+
+            .text_box h1 {
+                font-size: 20px;
+            }
+        }
+
+        /*---------Área das promoções---------*/
+
+        .promocoes {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .row {
+            margin-top: 5%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media (max-width:700px) {
+            .row {
+                flex-direction: column;
+            }
+        }
+
+        .promocoes_col {
+            flex-basis: 31%;
+            border-radius: 10px;
+            margin-bottom: 5%;
+            text-align: left;
+        }
+
+        .promocoes_col img {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+        }
+
+        .promocoes_col p {
+            padding: 0;
+        }
+
+        .promocoes_col h3 {
+            margin-top: 16px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        /*---------Área das avaliações dos clientes---------*/
+
+        .avaliacoes {
+            width: 80%;
+            margin: auto;
+            padding-top: 100px;
+            text-align: center;
+        }
+
+        .avaliacoes_col {
+            flex-basis: 44%;
+            border-radius: 10px;
+            margin-bottom: 5%;
+            text-align: left;
+            background: #fff3f3;
+            padding: 25px;
+            cursor: pointer;
+            display: flex;
+        }
+
+        .avaliacoes_col img {
+            height: 40px;
+            width: 40px;
+            margin-left: 5px;
+            margin-right: 30px;
+            border-radius: 50%;
+        }
+
+        .avaliacoes_col p {
+            padding: 0;
+        }
+
+        .avaliacoes_col h3 {
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .avaliacoes_col .fa {
+            color: #f44336;
+        }
+
+        @media(max-width:700px) {
+            .avaliacoes_col img {
+                margin-left: 0px;
+                margin-right: 15px;
+            }
+        }
+
+        /*---------Área dos contatos---------*/
+
+        .contatos {
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: auto;
+        }
+
+        .container .box {
+            position: relative;
+            width: 260px;
+            height: 250px;
+            margin: 30px;
+            background: #fff;
+            box-shadow: 0px 30px 50px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .container .box .imgBox {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.8s;
+            transform: scale(1) translateY(0);
+
+        }
+
+        .container .box:hover .imgBox {
+            transform: scale(1) translateY(-100%);
+
+        }
+
+        .container .box .imgBox img {
+            max-width: 100px;
+        }
+
+        .container .box .content {
+            position: relative;
+            top: 0;
+            Left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            background: #ff3579;
+            transition: 0.8s;
+            transform: scale(1) translateY(calc(100% - 5px));
+        }
+
+        .container .box:hover .content {
+            transform: scale(1);
+        }
+
+        .container .box:nth-child(2) .content {
+            background: #2ba1ff;
+        }
+
+        .container .box:nth-child(3) .content {
+            background: #c630e0;
+        }
+
+        .container .box .content .icon img {
+            max-width: 80px;
+            height: 60px;
+            filter: invert(1);
+        }
+
+        .container .box .content h3 {
+            color: #FFF;
+            text-transform: uppercase;
+            font-size: 16px;
+            letter-spacing: 2px;
+            margin-top: 20px;
+        }
+
+        .container .box .content h4 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /*---------Final da página/Sobre nós---------*/
+        .footer {
+            width: 100%;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .footer h4 {
+            margin-bottom: 25px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .icons .fa {
+            color: #f44336;
+            margin: 0 13px;
+            cursor: pointer;
+            padding: 18px 0;
+        }
+
+        .fa-heart-o {
+            color: #f44336;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <div class="nav-links" id="navLinks">
+                <ul>
+                    <li><a href="http://localhost:8000/menu">HOME</a></li>
+                    <li><a href="http://localhost:8000/login">LOGIN</a></li>
+                    <li><a href="http://localhost:8000/login">CADASTRO</a></li>
+                    <li><a href="http://localhost:8000/produtos">PRODUTOS</a></li>
+                    <li><a href="#contatos">CONTACT</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="text_box">
+            <h1>Code Pizza</h1>
+            <p>Entregando a melhor pizza com um serviço de execelência<br>a mais de 15 anos</p>
+            <a href="http://localhost:8000/produtos" class="peca_btn">Peça aqui</a>
+        </div>
+    </section>
+
+    <section class="promocoes">
+        <h1>Promoções</h1>
+        <p>Promoções da semana. Aproveite rápido.</p>
+        <div class="row">
+            <div class="promocoes_col">
+                <img
+                    src="https://images.pexels.com/photos/4109084/pexels-photo-4109084.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260">
+                <h3>Pepperonie</h3>
+                <p>Pizza de pepperonie: molho de tomate, muçarela, pepperoni. <br>2 refrigerantes lata à escolha.</p>
+            </div>
+            <div class="promocoes_col">
+                <img src="https://cdn.neemo.com.br/uploads/item/photo/701772/05f53a063fe35296c578593c523ab1a1.jpg">
+                <h3>Frango com catupiry</h3>
+                <p>Pizza de frango com catupiry: molho de tomate, muçarela, frango e catupiry. <br>Mais 1 refrigerante
+                    1,5L à escolha.</p>
+            </div>
+            <div class="promocoes_col">
+                <img
+                    src="https://pizzariameurancho.com.br/wp-content/uploads/2016/06/pizza-bacon-milho-min-1500x786.jpg">
+                <h3>Bacon e milho</h3>
+                <p>Pizza de bacon e milho: molho de tomate, muçarela, bacon e milho. <br>Acompanha 1 refrigerante 2L à
+                    escolha.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="avaliacoes">
+        <h1>Avaliações</h1>
+        <p>Opiniões dos nossos clientes.</p>
+        <div class="row">
+            <div class="avaliacoes_col">
+                <img
+                    src="https://images.pexels.com/photos/6249004/pexels-photo-6249004.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                <div>
+                    <p>Pizza e atendimento muito bons, melhor pizzaria da região.</p>
+                    <h3>Ana Clara</h3>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+            </div>
+            <div class="avaliacoes_col">
+                <img
+                    src="https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                <div>
+                    <p>Melhor pizza que já comi recomendo demais.</p>
+                    <h3>João Vitor</h3>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contatos" id="contatos">
+        <h1>Contatos</h1>
+        <p>Formas de entrar em contato conosco</p>
+        <div class="container">
+            <div class="box">
+                <div class="imgBox">
+                    <img src="https://img.icons8.com/wired/64/000000/phone.png">
+                </div>
+                <div class="content">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/wired/64/000000/phone.png">
+                    </div>
+                    <h3>Telefones</h3>
+                    <h4>(61) 99876-5432</h4>
+                    <h4>(61) 98865-5544</h4>
+                </div>
+            </div>
+            <div class="box">
+                <div class="imgBox">
+                    <img src="https://img.icons8.com/wired/64/000000/email.png">
+                </div>
+                <div class="content">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/wired/64/000000/email.png">
+                    </div>
+                    <h3>Email</h3>
+                    <h4>codepizza@gmail.com</h4>
+                    <h4>codepizzajuda@gmail.com</h4>
+                </div>
+            </div>
+            <div class="box">
+                <div class="imgBox">
+                    <img src="https://img.icons8.com/pastel-glyph/64/000000/location-update--v2.png">
+                </div>
+                <div class="content">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/pastel-glyph/64/000000/location-update--v2.png">
+                    </div>
+                    <h3>Estabelecimentos</h3>
+                    <h4>Águas Claras Norte Rua 10 lote 3</h4>
+                    <h4>Vicente Pires Rua 5 lote 28</h4>
+                    <h4>Taguatinga Norte CND 14 lote 10</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer">
+        <h4>Sobre nós</h4>
+        <p>Somos uma pizzaria com mais de 15 anos no mercado <br> sempre buscando melhorar e inovar de todas as
+            formas.</p>
+        <div class="icons">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+        <a href="https://github.com/Carlos-E-Souza" class="footer-link">
+            <p>Feito por Carlos@Souza</p>
+        </a>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pág Adm</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins: 200, 300, 400, 500, 600, 700, 800,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            min-height: 100vh;
+            background: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 40px 0;
+        }
+
+        .container .card {
+            position: relative;
+            min-width: 320px;
+            height: 440px;
+            box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+                inset -5px 5px 15px rgba(255, 255, 255, 0.1),
+                5px 5px 15px rgba(0, 0, 0, 0.3),
+                -5px -5px 15px rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin: 30px;
+        }
+
+        .container .card .box {
+            position: absolute;
+            top: 20px;
+            Left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: #2a2b2f;
+            border: 2px solid #1e1f23;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transition: 0.5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container .card .box::before {
+            content: '';
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .container .card .box:hover {
+            transform: translateY(-56px);
+            box-shadow: 0 40px 70px rgba(0, 0, 0, 0.5);
+        }
+
+        .container .card .box .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container .card .box .content h2 {
+            position: absolute;
+            top: -10px;
+            right: 30px;
+            font-size: 8em;
+            color: rgba(255, 255, 255, 0.05);
+        }
+
+        .container .card .box .content h3 {
+            font-size: 1.8em;
+            color: rgba(255, 255, 255, 0.5);
+            z-index: 1;
+            transition: 0.5s;
+        }
+
+        .container .card .box .content p {
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.5);
+            z-index: 1;
+            transition: 0.5s;
+        }
+
+        .container .card .box .content .button {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: #000;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 400;
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-out;
+        }
+
+        .overlay {
+            position: relative;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .overlay:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup {
+            margin: auto;
+            height: 350px;
+            padding: 20px;
+            background: #333;
+            position: relative;
+            transition: all 5s ease-in-out;
+        }
+
+        .popup h2 {
+            margin-top: 0;
+            color: #fff;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .popup .close:hover {
+            color: #ff0202;
+        }
+
+        .popup .content_pop {
+            width: 550px;
+            height: 350px;
+            overflow: auto;
+            padding: 20px;
+        }
+
+        .popup .content_pop input {
+            position: relative;
+            font-size: 18px;
+            width: 80px;
+            height: 26px;
+            border-radius: 10px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            transition: 0.5s;
+            background: rgba(234, 234, 240, 0.575);
+        }
+
+        .popup .content_pop input:hover {
+            width: 120px;
+            border: 2px solid rgba(255, 255, 255, 1)
+        }
+
+        .popup .content_pop span {
+            font-size: 20px;
+        }
+
+        .popup .content_pop .button {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: #000;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 400;
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-out;
+        }
+
+        @media screen and (max-width: 700px) {
+            .popup {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+
+<body onload="atualizar_informacoes()">
+    <div class="container">
+        <div class="card">
+            <div class="box">
+                <div class="content">
+                    <h2>01</h2>
+                    <h3>Loja Águas Claras</h3>
+                    <p id="funcionarios_AC">Funcionarios: 18</p>
+                    <p id="gastos_AC">Gastos: </p>
+                    <p id="renda_AC">Renda: </p>
+                    <p id="salas_AC">Salas/Espaços: 2 salas para acomodar os clientes, 1 cozinha, 2 banheiros</p>
+                    <a class="button" href="#popup1">Alteração</a>
+                </div>
+            </div>
+        </div>
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <h2>Realize as mudanças necessárias</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content_pop">
+                    <span>Funcionarios:</span>
+                    <input type="number" id="novo_funcio_AC"><br>
+                    <span>Gastos: </span>
+                    <input type="number" id="novo_gastos_AC"><br>
+                    <span>Renda: </span>
+                    <input type="number" id="nova_renda_AC"><br>
+                    <span>Salas para clientes:</span>
+                    <input type="number" id="salas_clientes_AC"><span><br>cozinha(s)</span><input type="number"
+                        id="cozinhas_AC"><br><span>banheiros: </span><input type="number" id="banheiros_AC"> <br>
+                    <button class="button" onclick="alterar_dados_AC()">Concluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="box">
+                <div class="content">
+                    <h2>02</h2>
+                    <h3>Loja Vicente Pires</h3>
+                    <p id="funcionarios_VP">Funcionarios: 15</p>
+                    <p id="gastos_VP">Gastos:</p>
+                    <p id="renda_VP">Renda:</p>
+                    <p id="salas_VP">Salas/Espaços: 2 salas para acomodar os clientes, 1 cozinha, 2 banheiros</p>
+                    <a class="button" href="#popup2">Alteração</a>
+                </div>
+            </div>
+        </div>
+        <div id="popup2" class="overlay">
+            <div class="popup">
+                <h2>Realize as mudanças necessárias</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content_pop">
+                    <span>Funcionarios:</span>
+                    <input type="number" id="novo_funcio_VP"><br>
+                    <span>Gastos: </span>
+                    <input type="number" id="novo_gastos_VP"><br>
+                    <span>Renda: </span>
+                    <input type="number" id="nova_renda_VP"><br>
+                    <span>Salas para clientes:</span>
+                    <input type="number" id="salas_clientes_AC"><span><br>cozinha(s)</span><input type="number"
+                        id="cozinhas_AC"><br><span>banheiros: </span><input type="number" id="banheiros_AC"> <br>
+                    <button class="button" onclick="alterar_dados_VP()">Concluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="box">
+                <div class="content">
+                    <h2>03</h2>
+                    <h3>Loja Taguatinga Norte</h3>
+                    <p id="funcionarios_TN">Funcionarios: 20</p>
+                    <p id="gastos_TN">Gastos: </p>
+                    <p id="renda_TN">Renda: </p>
+                    <p id="salas_TN">Salas/Espaços: 2 salas para acomodar os clientes, 1 cozinha, 2 banheiros</p>
+                    <a class="button" href="#popup3">Alteração</a>
+                </div>
+            </div>
+        </div>
+        <div id="popup3" class="overlay">
+            <div class="popup">
+                <h2>Realize as mudanças necessárias</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content_pop">
+                    <span>Funcionarios:</span>
+                    <input type="number" id="novo_funcio_TN"><br>
+                    <span>Gastos: </span>
+                    <input type="number" id="novo_gastos_TN"><br>
+                    <span>Renda: </span>
+                    <input type="number" id="nova_renda_TN"><br>
+                    <span>Salas para clientes:</span>
+                    <input type="number" id="salas_clientes_AC"><span><br>cozinha(s)</span><input type="number"
+                        id="cozinhas_AC"><br><span>banheiros: </span><input type="number" id="banheiros_AC"> <br>
+                    <button class="button" onclick="alterar_dados_TN()">Concluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var meses_port = new Object();
+        var meses_port = {
+            1: 'Janeiro', 2: 'Fevereiro', 3: 'Março', 4: 'Abril',
+            5: 'Maio', 6: 'Junho', 7: 'Julho', 8: 'Agosto',
+            9: 'Setembro', 10: 'Outubro', 11: 'Novembro', 12: 'Dezembro'
+        };
+        var data = new Date();
+        var mes = meses_port[data.getMonth() + 1];
+
+        function atualizar_informacoes() {
+            let gastos_AC = document.querySelector('#gastos_AC');
+            let gastos_VP = document.querySelector('#gastos_VP');
+            let gastos_TN = document.querySelector('#gastos_TN');
+            gastos_AC.innerHTML = `Gastos de ${mes}: R$10.000`;
+            gastos_VP.innerHTML = `Gastos de ${mes}: R$8.000`;
+            gastos_TN.innerHTML = `Gastos de ${mes}: R$9.000`;
+
+            let renda_AC = document.querySelector('#renda_AC');
+            let renda_VP = document.querySelector('#renda_VP');
+            let renda_TN = document.querySelector('#renda_TN');
+            renda_AC.innerHTML = `Renda de ${mes}: R$15.000`;
+            renda_VP.innerHTML = `Renda de ${mes}: R$12.000`;
+            renda_TN.innerHTML = `Renda de ${mes}: R$14.000`;
+        };
+
+        function alterar_dados_AC() {
+            let funcionarios_AC = document.querySelector('#funcionarios_AC');
+            let novo_funcio_AC = document.querySelector('#novo_funcio_AC').value;
+            let gastos_AC = document.querySelector('#gastos_AC');
+            let novo_gastos_AC = document.querySelector('#novo_gastos_AC').value;
+            let renda_AC = document.querySelector('#renda_AC');
+            let nova_renda_AC = document.querySelector('#nova_renda_AC').value;
+            let salas_AC = document.querySelector('#salas_AC');
+            let salas_clientes_AC = document.querySelector('#salas_clientes_AC').value;
+            let cozinhas_AC = document.querySelector('#cozinhas_AC').value;
+            let banheiros_AC = document.querySelector('#banheiros_AC').value;
+            funcionarios_AC.innerHTML = `Funcionarios: ${novo_funcio_AC}`;
+            gastos_AC.innerHTML = `Gastos de ${mes}: R$${novo_gastos_AC}`;
+            renda_AC.innerHTML = `Renda de ${mes}: R$${nova_renda_AC}`;
+            salas_AC.innerHTML = `Salas/Espaços: ${salas_clientes_AC} salas para acomodar os clientes, ${cozinhas_AC} cozinha, ${banheiros_AC} banheiros`;
+        }
+    </script>
+</body>
+
+</html>
