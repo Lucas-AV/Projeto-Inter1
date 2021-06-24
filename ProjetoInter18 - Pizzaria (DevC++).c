@@ -1,19 +1,12 @@
 // github: LucasV75
-/*
-Feito:
-1. OpÁ„o de troca de acessos (Usu·rio e senha) para funcion·rios e administradores
-Pendente:
-1. InformaÁ„o de funcion·rio (Geral similar a cliente)
-2. Sal·rio do funcion·rio
-*/
 #include <stdio.h>   // Inputs e outputs em C
-#include <stdlib.h>  // Padr„o do C
+#include <stdlib.h>  // Padr√£o do C
 #include <locale.h>  // Configura o idioma do terminal
-#include <ctype.h>   // Serve para verificar os tipos de vari·veis
-#include <stdbool.h> // Adiciona o tipo de vari·vel bool ao C
-#include <Windows.h> // Inclui a funÁ„o "sleep" e mais algumas outras
-#include <conio.h>   // Respons·vel pelo getch();
-#include <time.h>    // Serve para usar funÁıes relacionadas a tempo
+#include <ctype.h>   // Serve para verificar os tipos de vari√°veis
+#include <stdbool.h> // Adiciona o tipo de vari√°vel bool ao C
+#include <Windows.h> // Inclui a fun√ß√£o "sleep" e mais algumas outras
+#include <conio.h>   // Respons√°vel pelo getch();
+#include <time.h>    // Serve para usar fun√ß√µes relacionadas a tempo
 // Cores
 #define GRN "\e[1;32m"
 #define RED "\e[1;31m"
@@ -22,11 +15,11 @@ Pendente:
 // Utilidades!
 void strcenter(char *line, char *string, char digit, bool color){
     int i;
-	int lenString = strlen(string);
+    int lenString = strlen(string);
     if(color == true){
         lenString -= 10;
     }
-    int Mid = strlen(line)-lenString; // Calcula a diferenÁa de tamanho entre as strings fornecidas
+    int Mid = strlen(line)-lenString; // Calcula a diferen√ßa de tamanho entre as strings fornecidas
     printf("%s\n",line);
     if(strlen(line) % 2 != 0){
         Mid += 1; // Contador
@@ -45,7 +38,7 @@ void strcenter(char *line, char *string, char digit, bool color){
     printf("\n%s\n",line); // Printa a linha final
 }
 
-// MÈtodo de validaÁ„o de informaÁ„o por meio de verificaÁ„o de caracteres
+// M√©todo de valida√ß√£o de informa√ß√£o por meio de verifica√ß√£o de caracteres
 int ValInfo(char Alvo, char *Lista){
     int Count = 0;
     int i;
@@ -55,11 +48,11 @@ int ValInfo(char Alvo, char *Lista){
             Count++;
         }
     }
-    // Se Count for igual a 0, o char que est· sendo verificado vai ser considerado inv·lido!
+    // Se Count for igual a 0, o char que est√° sendo verificado vai ser considerado inv√°lido!
     return Count;
 }
 
-// AnimaÁ„o de carregamento!
+// Anima√ß√£o de carregamento!
 void Animation(){
     int i;
     for (i = 0; i < 16; i++){
@@ -81,21 +74,21 @@ struct Locais{
     int QntLojas;
 };
 
-// Struct para salvar informaÁıes referentes ao usuario
+// Struct para salvar informa√ß√µes referentes ao usuario
 struct User{
-    char *Pizzas[100], *Tamanhos[100];  // InformaÁ„os das pizzas pedidas pelo cliente
-    char usuario[100], senha[100], nome[100], telefone[100], retirada[100]; // InformaÁıes do cliente
-    char endereco[2][100];  // EndereÁo do cliente (Cidade + EndereÁo)
+    char *Pizzas[100], *Tamanhos[100];  // Informa√ß√£os das pizzas pedidas pelo cliente
+    char usuario[100], senha[100], nome[100], telefone[100], retirada[100]; // Informa√ß√µes do cliente
+    char endereco[2][100];  // Endere√ßo do cliente (Cidade + Endere√ßo)
     int quantidade[100];   // Quantidade das pizzas do cliente por pedido
-    int ID;         // Usado para verificar a existÍncia da conta
+    int ID;         // Usado para verificar a exist√™ncia da conta
     int Contador;   // Utilizado para interagir com Pizzas,Tamanhos e quantidade;
-    bool logado;    // Utilizado para validaÁ„o de login (Atualmente sÛ funciona com Admin)
+    bool logado;    // Utilizado para valida√ß√£o de login (Atualmente s√≥ funciona com Admin)
     float total;    // Total do pedido
 };
 
-// Usei para armazenar informaÁıes referentes a cada usuario (Um jeito de salvar os pedidos)
+// Usei para armazenar informa√ß√µes referentes a cada usuario (Um jeito de salvar os pedidos)
 struct Login{
-    struct User sessoes[100];   // Registro de sessıes de logins feitas
+    struct User sessoes[100];   // Registro de sess√µes de logins feitas
     int numSessoes;             // Contador de sessoes
 };
 
@@ -118,7 +111,7 @@ struct Menu{
 
 void viewPizzas(struct Pizzas pizzas, char *line, int digit){
     system("cls");
-    strcenter(line,"Sabores de pizzas disponÌveis no momento!",digit,false);
+    strcenter(line,"Sabores de pizzas dispon√≠veis no momento!",digit,false);
     int i;
     int l;
     for(i = 0; i < pizzas.QntSalgadas; i++){
@@ -164,8 +157,8 @@ void viewContatos(char *decorador){
 void viewSobre(char *decorador){
     system("cls");
     strcenter(decorador,"Sobre",32,false);
-    printf("Mensagem de motivaÁ„o da pizzaria     (EXEMPLO)\n");
-    printf("DescriÁ„o do negÛcio da pizzaria      (EXEMPLO)\n");
+    printf("Mensagem de motiva√ß√£o da pizzaria     (EXEMPLO)\n");
+    printf("Descri√ß√£o do neg√≥cio da pizzaria      (EXEMPLO)\n");
     printf("%s\n",decorador);
     system("PAUSE");
 }
@@ -182,7 +175,7 @@ void viewTamanhosPizza(char *decorador, float preco[3], char *nomes[3], char *sa
 
 void viewLojas(struct Locais Lojas, char *line, int digit){
     system("cls");
-    strcenter(line,"InformaÁıes sobre cada loja!",digit,false);
+    strcenter(line,"Informa√ß√µes sobre cada loja!",digit,false);
     int i;
     for(i = 0; i < Lojas.QntLojas; i++){
         printf("%s\n",Lojas.Cidades[i]);
@@ -198,7 +191,7 @@ void viewLojas(struct Locais Lojas, char *line, int digit){
             printf("Neutro!");
         }
         else{
-           printf(RED"PrejuÌzo!"RST" (R$ %.2f)",Lojas.Lucros[i] - Lojas.Gastos[i]);    
+           printf(RED"Preju√≠zo!"RST" (R$ %.2f)",Lojas.Lucros[i] - Lojas.Gastos[i]);    
         }
         printf("\n%s\n",line);
     }
@@ -218,20 +211,20 @@ void viewMenu(struct Menu menu, char *line, int digit){
 
 void viewEnderecos(char enderecos[100][2][100], char users[100][4][100], int cUsers,char *line, int digit){
     system("cls");
-    strcenter(line,"- Lista de endereÁos dos clientes -",digit,false);
+    strcenter(line,"- Lista de endere√ßos dos clientes -",digit,false);
     int i;
     if(cUsers > 2){
         for(i = 2; i < cUsers; i++){
             printf("> Cliente:  %s\n",users[i][0]);
             printf("> Cidade:   %s\n",enderecos[i][0]);
-            printf("> EndereÁo: %s\n",enderecos[i][1]);
+            printf("> Endere√ßo: %s\n",enderecos[i][1]);
             if(i < (cUsers-1)){
                 printf("\n");
             }
         }
     } else {
         printf("> Sem clientes cadastrados\n");
-        printf("> Sem endereÁos cadastrados\n");
+        printf("> Sem endere√ßos cadastrados\n");
     }
     
     printf("%s\n",line);
@@ -248,8 +241,8 @@ void viewPedidos(struct Login logins, char *line){
                 for (C = 0; C < logins.sessoes[i].Contador; C++){
                     printf("> %s (%i %s)\n",logins.sessoes[i].Pizzas[C],logins.sessoes[i].quantidade[C],logins.sessoes[i].Tamanhos[C]);
                 }
-                if(logins.sessoes[i].endereco[0] > 0 && logins.sessoes[i].endereco[1] > 0 && strcmp(logins.sessoes[i].retirada,"EndereÁo do cliente") == 0){
-                    printf("EndereÁo: %s\n",logins.sessoes[i].endereco[1]);
+                if(logins.sessoes[i].endereco[0] > 0 && logins.sessoes[i].endereco[1] > 0 && strcmp(logins.sessoes[i].retirada,"Endere√ßo do cliente") == 0){
+                    printf("Endere√ßo: %s\n",logins.sessoes[i].endereco[1]);
                     printf("Cidade:   %s\n",logins.sessoes[i].endereco[0]);
                 }
                 else {
@@ -267,15 +260,15 @@ void viewPedidos(struct Login logins, char *line){
 }
 
 int main(){
-    // ConfiguraÁıes!
+    // Configura√ß√µes!
     // system("chcp 65001");
     setlocale(LC_ALL, "Portuguese");
     srand(time(NULL));
 
-    // DeclaraÁıes
-    int option = 100;               // NavegaÁ„o
-    char PassUsers[100][4][100];    // Lista de contas criadas (Nome, Telefone, Usu·rio, Senha);
-    char Enderecos[100][2][100];    // Lista de EndereÁos criados (Cidade, EndereÁo)
+    // Declara√ß√µes
+    int option = 100;               // Navega√ß√£o
+    char PassUsers[100][4][100];    // Lista de contas criadas (Nome, Telefone, Usu√°rio, Senha);
+    char Enderecos[100][2][100];    // Lista de Endere√ßos criados (Cidade, Endere√ßo)
     int cPassUsers = 0;             // Contador para contas criadas
     int i;
 
@@ -285,7 +278,7 @@ int main(){
     char *line2 = "====================================================================";
     char *nome = "Pizzaria: Code Pizza"; // nome da loja
 
-    // Lista de caracteres disponÌveis
+    // Lista de caracteres dispon√≠veis
     char nums[10] = {'0','1','2','3','4','5','6','7','8','9'};
     char Alpha[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
     char AlphaNums[62] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}; // Alfabeto
@@ -294,8 +287,8 @@ int main(){
     char AdmNome[100] = "Admin";
     char AdmUser[100] = "adm@gmail.com";
     char AdmSenha[100] = "adm123";
-    // Funcion·rio
-    char FuncNome[100] = "Funcion·rio";
+    // Funcion√°rio
+    char FuncNome[100] = "Funcion√°rio";
     char FuncUser[100] = "func@gmail.com";
     char FuncSenha[100] = "func123";
     float FuncSal = 3000;
@@ -318,7 +311,7 @@ int main(){
     lojas.Lucros[0] = rand() % 5000 + 10000;
     lojas.Gastos[0] = rand() % 5000 + 7500;
     lojas.Renda[0] = lojas.Renda[0] + lojas.Gastos[0];
-    lojas.Cidades[0] = "¡guas Claras Norte";
+    lojas.Cidades[0] = "√Åguas Claras Norte";
     lojas.Enderecos[0] = "Rua 10 Lote 3";
     lojas.Salas[0] = rand() % 3 + 2;
     lojas.Empregados[0] = rand() % 10 + 2;
@@ -362,56 +355,56 @@ int main(){
 
     // Salgadas
     pizzas.salgadas[0][0] = "Pizza de Calabresa com bacon";
-    pizzas.salgadas[0][1] = "> Calabresa\n> Bacon\n> MuÁarela\n> OrÈgano";
+    pizzas.salgadas[0][1] = "> Calabresa\n> Bacon\n> Mu√ßarela\n> Or√©gano";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.salgadas[pizzas.QntGeral][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.salgadas[pizzas.QntGeral][1];
     pizzas.QntSalgadas += 1;
     pizzas.QntGeral += 1;
 
     pizzas.salgadas[1][0] = "Pizza de Portuguesa especial";
-    pizzas.salgadas[1][1] = "> MuÁarela\n> Presunto\n> Palmito\n> Ervilha\n> Lombo canadense\n> Provolone\n> Ovo\n> Bacon";
+    pizzas.salgadas[1][1] = "> Mu√ßarela\n> Presunto\n> Palmito\n> Ervilha\n> Lombo canadense\n> Provolone\n> Ovo\n> Bacon";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.salgadas[pizzas.QntGeral][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.salgadas[pizzas.QntGeral][1];
     pizzas.QntSalgadas += 1;
     pizzas.QntGeral += 1;
 
     pizzas.salgadas[2][0] = "Pizza de Frango com catupiry";
-    pizzas.salgadas[2][1] = "> Peito de frango\n> OrÈgano\n> Queijo catupiry";
+    pizzas.salgadas[2][1] = "> Peito de frango\n> Or√©gano\n> Queijo catupiry";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.salgadas[pizzas.QntGeral][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.salgadas[pizzas.QntGeral][1];
     pizzas.QntSalgadas += 1;
     pizzas.QntGeral += 1;
 
     pizzas.salgadas[3][0] = "Pizza de Marguerita";
-    pizzas.salgadas[3][1] = "> MuÁarela\n> Manjeric„o\n> OrÈgano\n> Tomate\n> Azeitona";
+    pizzas.salgadas[3][1] = "> Mu√ßarela\n> Manjeric√£o\n> Or√©gano\n> Tomate\n> Azeitona";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.salgadas[pizzas.QntGeral][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.salgadas[pizzas.QntGeral][1];
     pizzas.QntSalgadas += 1;
     pizzas.QntGeral += 1;
 
     pizzas.salgadas[4][0] = "Pizza de 4 Queijos";
-    pizzas.salgadas[4][1] = "> Parmes„o ralado\n> MuÁarela ralada\n> Provolone\n> Gorgonzola";
+    pizzas.salgadas[4][1] = "> Parmes√£o ralado\n> Mu√ßarela ralada\n> Provolone\n> Gorgonzola";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.salgadas[pizzas.QntGeral][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.salgadas[pizzas.QntGeral][1];
     pizzas.QntSalgadas += 1;
     pizzas.QntGeral += 1;
 
     pizzas.salgadas[5][0] = "Pizza de Pepperoni";
-    pizzas.salgadas[5][1] = "> Salame italiano\n> Piment„o\n> MuÁarela\n> Pimenta Calabresa\n> Molho especial";
+    pizzas.salgadas[5][1] = "> Salame italiano\n> Piment√£o\n> Mu√ßarela\n> Pimenta Calabresa\n> Molho especial";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.salgadas[pizzas.QntGeral][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.salgadas[pizzas.QntGeral][1];
     pizzas.QntSalgadas += 1;
     pizzas.QntGeral += 1;
 
     pizzas.salgadas[6][0] = "Pizza de Mussarela";
-    pizzas.salgadas[6][1] = "> MuÁarela\n> OrÈgano";
+    pizzas.salgadas[6][1] = "> Mu√ßarela\n> Or√©gano";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.salgadas[pizzas.QntGeral][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.salgadas[pizzas.QntGeral][1];
     pizzas.QntSalgadas += 1;
     pizzas.QntGeral += 1;
 
     pizzas.salgadas[7][0] = "Pizza Romana";
-    pizzas.salgadas[7][1] = "> MuÁarela\n> Azeitona\n> Anchovas\n> Azeite\n> Tomate Seco";
+    pizzas.salgadas[7][1] = "> Mu√ßarela\n> Azeitona\n> Anchovas\n> Azeite\n> Tomate Seco";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.salgadas[pizzas.QntGeral][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.salgadas[pizzas.QntGeral][1];
     pizzas.QntSalgadas += 1;
@@ -419,21 +412,21 @@ int main(){
 
     // Doces
     pizzas.doces[0][0] = "Pizza de Morango com chocolate";
-    pizzas.doces[0][1] = "> PÍssego em calda fatiado\n> Abacaxi em calda fatiado\n> Figo em calda fatiado\n> MuÁarela\n> Lombinho";
+    pizzas.doces[0][1] = "> P√™ssego em calda fatiado\n> Abacaxi em calda fatiado\n> Figo em calda fatiado\n> Mu√ßarela\n> Lombinho";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.doces[pizzas.QntGeral%pizzas.QntSalgadas][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.doces[pizzas.QntGeral%pizzas.QntSalgadas][1];
     pizzas.QntDoces += 1;
     pizzas.QntGeral += 1;
 
     pizzas.doces[1][0] = "Pizza de Banana com chocolate";
-    pizzas.doces[1][1] = "> Leite condensado\n> MuÁarela\n> Chocolate\n> Banana";
+    pizzas.doces[1][1] = "> Leite condensado\n> Mu√ßarela\n> Chocolate\n> Banana";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.doces[pizzas.QntGeral%pizzas.QntSalgadas][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.doces[pizzas.QntGeral%pizzas.QntSalgadas][1];
     pizzas.QntDoces += 1;
     pizzas.QntGeral += 1;
 
     pizzas.doces[2][0] = "Pizza de Banana com canela";
-    pizzas.doces[2][1] = "> AÁucar com canela\n> MuÁarela\n> Banana";
+    pizzas.doces[2][1] = "> A√ßucar com canela\n> Mu√ßarela\n> Banana";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.doces[pizzas.QntGeral%pizzas.QntSalgadas][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.doces[pizzas.QntGeral%pizzas.QntSalgadas][1];
     pizzas.QntDoces += 1;
@@ -447,14 +440,14 @@ int main(){
     pizzas.QntGeral += 1;
 
     pizzas.doces[4][0] = "Pizza de Romeu e Julieta";
-    pizzas.doces[4][1] = "> MuÁarela\n> Goiabada\n> Canela";
+    pizzas.doces[4][1] = "> Mu√ßarela\n> Goiabada\n> Canela";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.doces[pizzas.QntGeral%pizzas.QntSalgadas][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.doces[pizzas.QntGeral%pizzas.QntSalgadas][1];
     pizzas.QntDoces += 1;
     pizzas.QntGeral += 1;
 
     pizzas.doces[5][0] = "Pizza de California";
-    pizzas.doces[5][1] = "> PÍssego em calda fatiado\n> Abacaxi em calda fatiado\n> Figo em calda fatiado\n> MuÁarela\n> Lombinho";
+    pizzas.doces[5][1] = "> P√™ssego em calda fatiado\n> Abacaxi em calda fatiado\n> Figo em calda fatiado\n> Mu√ßarela\n> Lombinho";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.doces[pizzas.QntGeral%pizzas.QntSalgadas][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.doces[pizzas.QntGeral%pizzas.QntSalgadas][1];
     pizzas.QntDoces += 1;
@@ -468,13 +461,13 @@ int main(){
     pizzas.QntGeral += 1;
 
     pizzas.doces[7][0] = "Pizza de Chocolate";
-    pizzas.doces[7][1] = "> Calda de chocolate\n> Castanhas torradas moÌdas\n> Cereja em calda\n> Granulado";
+    pizzas.doces[7][1] = "> Calda de chocolate\n> Castanhas torradas mo√≠das\n> Cereja em calda\n> Granulado";
     pizzas.geral[pizzas.QntGeral][0] = pizzas.doces[pizzas.QntGeral%pizzas.QntSalgadas][0];
     pizzas.geral[pizzas.QntGeral][1] = pizzas.doces[pizzas.QntGeral%pizzas.QntSalgadas][1];
     pizzas.QntDoces += 1;
     pizzas.QntGeral += 1;
 
-    // PreÁos
+    // Pre√ßos
     pizzas.precos[0] = 10.00;
     pizzas.precos[1] = 15.00;
     pizzas.precos[2] = 25.00;
@@ -502,7 +495,7 @@ int main(){
     UserMenu.Items[0] = "Fazer um pedido";
     UserMenu.Items[1] = "Ver resumo do pedido";
     UserMenu.Items[2] = "Locais de retirada";
-    UserMenu.Items[3] = "Modificar endereÁo";
+    UserMenu.Items[3] = "Modificar endere√ßo";
     UserMenu.Items[4] = "Ver sua conta";
     UserMenu.Items[5] = "Sair";
     UserMenu.Tamanho = 6;
@@ -510,58 +503,58 @@ int main(){
     struct Menu AdmMenu;
     strcpy(AdmMenu.title,"Logado como Administrador");
     AdmMenu.Items[0] = "Consultar Lojas";
-    AdmMenu.Items[1] = "Receita do mÍs";
+    AdmMenu.Items[1] = "Receita do m√™s";
     AdmMenu.Items[2] = "Pedidos do dia";
-    AdmMenu.Items[3] = "InformaÁıes de acessos";
+    AdmMenu.Items[3] = "Informa√ß√µes de acessos";
     AdmMenu.Items[4] = "Sair";
     AdmMenu.Tamanho = 5;
 
     struct Menu AccMenu;
-    strcpy(AccMenu.title,"- MUDAN«A DE INFORMA«’ES -");
+    strcpy(AccMenu.title,"- MUDAN√áA DE INFORMA√á√ïES -");
     AccMenu.Items[0] = "Nome em conta";
     AccMenu.Items[1] = "Telefone";
-    AccMenu.Items[2] = "Usu·rio";
+    AccMenu.Items[2] = "Usu√°rio";
     AccMenu.Items[3] = "Senha";
     AccMenu.Items[4] = "Voltar";
     AccMenu.Tamanho = 5;
 
     struct Menu FuncMenu;
     FuncMenu.Items[0] = "Resumo da rede pizzaria";
-    FuncMenu.Items[1] = "EndereÁo dos clientes";
+    FuncMenu.Items[1] = "Endere√ßo dos clientes";
     FuncMenu.Items[2] = "Pedidos da pizzaria";
-    FuncMenu.Items[3] = "InformaÁıes";
+    FuncMenu.Items[3] = "Informa√ß√µes";
     FuncMenu.Items[4] = "Sair";
     FuncMenu.Tamanho = 5;
     // Code
     do{
-        // Init struct User ("Usuario atual >>> Muda toda vez q o loop recomeÁa!")
+        // Init struct User ("Usuario atual >>> Muda toda vez q o loop recome√ßa!")
         struct User user_atual;
-        user_atual.Contador = 0;    // Contador de pizzas pedidas atÈ o momento
+        user_atual.Contador = 0;    // Contador de pizzas pedidas at√© o momento
         user_atual.total = 0;       // Total do pedido
         user_atual.logado = false;  // Bool de controle
 
-        viewMenu(MainMenu,line,32); // FunÁ„o de menu
-        option = getch();           // Um tipo de input especifico sem enter que retorna um valor em n˙mero digitado pelo usu·rio!
+        viewMenu(MainMenu,line,32); // Fun√ß√£o de menu
+        option = getch();           // Um tipo de input especifico sem enter que retorna um valor em n√∫mero digitado pelo usu√°rio!
         Sleep(20);
-        if(option >= 48 && option <= 57){ // 0 a 9 s„o respectivamente as teclas de n˙mero 48 a 57 do teclado
+        if(option >= 48 && option <= 57){ // 0 a 9 s√£o respectivamente as teclas de n√∫mero 48 a 57 do teclado
             option = option%48;
         }
 
         if (option == 1){ // Comando condicional que se relaciona com o valor option
-            // Loop para mostar informaÁıes das Pizzas
-            int CodePizza; // Define o valor de option para 100 por padr„o para evitar bugs relacionados ao scanf
+            // Loop para mostar informa√ß√µes das Pizzas
+            int CodePizza; // Define o valor de option para 100 por padr√£o para evitar bugs relacionados ao scanf
             do{
                 viewPizzas(pizzas,line2,32); // Ver Cadapio de Pizzas
                 printf("Escolha uma pizza! (Pressione ESC para voltar)");
                 printf("\n> ");
                 CodePizza = getch();
                 Sleep(20);
-                // Apenas pra deixar o cÛdigo mais bonito, essa parte escreve no terminal a letra que foi digitada pelo usu·rio
+                // Apenas pra deixar o c√≥digo mais bonito, essa parte escreve no terminal a letra que foi digitada pelo usu√°rio
                 if(CodePizza >= 65 && CodePizza <= 90){ // Caixa alta (A ... Z)
                     printf("%c\n",CodePizza);
                     CodePizza %= 65;
                 }
-                else if(CodePizza >= 97 && CodePizza <= 122){ // Letra min˙scula (a ... z)
+                else if(CodePizza >= 97 && CodePizza <= 122){ // Letra min√∫scula (a ... z)
                     printf("%c\n",toupper(CodePizza));
                     CodePizza %= 97;
                 }
@@ -579,7 +572,7 @@ int main(){
             do{
                 system("cls");
                 strcenter(line,"Login || Registro",32,false);
-                printf("> Usu·rio: ");
+                printf("> Usu√°rio: ");
                 gets(user_atual.usuario); // user_atual.usuario = variavel usuario de user_atual
                 fflush(stdin);
                 int cpmUser = strcmp(user_atual.usuario, AdmUser); // strcmp compara as strings e retorna 0 se forem iguais (-1,1) se forem diferentes
@@ -592,9 +585,9 @@ int main(){
                 fflush(stdin);
                 int cmpSenha = strcmp(user_atual.senha, AdmSenha);
                 Animation();
-                bool contaReal = false;     // Serve como verificador de existÍncia das contas (Por padr„o È false)
-                bool senhaErrada = false;   // Serve como verificador de senhas por usu·rio    (Por padr„o È false)
-                // Loop de repetiÁ„o em for para checar usu·rio por usu·rio para ver se ele existe ou n„o
+                bool contaReal = false;     // Serve como verificador de exist√™ncia das contas (Por padr√£o √© false)
+                bool senhaErrada = false;   // Serve como verificador de senhas por usu√°rio    (Por padr√£o √© false)
+                // Loop de repeti√ß√£o em for para checar usu√°rio por usu√°rio para ver se ele existe ou n√£o
                 for(i = 0; i < cPassUsers; i++){
                     if(strcmp(user_atual.usuario,PassUsers[i][2]) == 0){
                         contaReal = true;
@@ -612,10 +605,10 @@ int main(){
                     }
                 }
 
-                // VerificaÁ„o de existÍncia de USER
+                // Verifica√ß√£o de exist√™ncia de USER
                 if(contaReal == false && cpmUser != 0 && cmpSenha != 0 && strcmp(user_atual.usuario,FuncUser) != 0 && strcmp(user_atual.senha,FuncSenha) != 0){
-                    strcenter(line,RED"- Essa conta n„o existe! -"RST,32,true);
-                    char SN;    // Sim e N„o
+                    strcenter(line,RED"- Essa conta n√£o existe! -"RST,32,true);
+                    char SN;    // Sim e N√£o
                     printf("Deseja criar uma conta?\n> ");
                     SN = getch();
                     Sleep(20);
@@ -625,25 +618,25 @@ int main(){
                         int ValChar;
                         do{
                             system("cls");
-                            strcenter(line,"- CRIA«√O DE CONTA! -",32,false);
+                            strcenter(line,"- CRIA√á√ÉO DE CONTA! -",32,false);
                             printf("> Seu nome: ");
                             gets(PassUsers[cPassUsers][0]);
                             fflush(stdin);
                             ValChar = ValInfo(PassUsers[cPassUsers][0][0],AlphaNums);
                         } while (strlen(PassUsers[cPassUsers][0]) == 0 || ValChar == 0);
                        
-                        // N˙mero de telefone
+                        // N√∫mero de telefone
                         bool valTelefone = false;
                         do{
                             system("cls");
-                            strcenter(line,"- CRIA«√O DE CONTA! -",32,false);
+                            strcenter(line,"- CRIA√á√ÉO DE CONTA! -",32,false);
                             printf("> Seu nome: %s\n",PassUsers[cPassUsers][0]);
                             printf("> Telefone (com DDD): ");
                             scanf("%s",&PassUsers[cPassUsers][1]);
                             fflush(stdin);
                             int Counts = 0;
                             int j;
-                            // Loop para verificar existÍncia de n˙meros (SÛ acontece se o tamanho for exatamente igual a 11 (DDD + Telefone))
+                            // Loop para verificar exist√™ncia de n√∫meros (S√≥ acontece se o tamanho for exatamente igual a 11 (DDD + Telefone))
                             if(strlen(PassUsers[cPassUsers][1]) == 11){
                                 for(i = 0; i < 11; i++){
                                     for(j = 0; j < 10; j++){
@@ -658,22 +651,22 @@ int main(){
                                 valTelefone = true;
                             }
                             else{
-                                // Mensagem de erro para n˙meros de telefones inv·lidos
-                                strcenter(line,RED"- ERROR: Telefone inv·lido -"RST,32,true);
+                                // Mensagem de erro para n√∫meros de telefones inv√°lidos
+                                strcenter(line,RED"- ERROR: Telefone inv√°lido -"RST,32,true);
                                 Sleep(600);
                             }
                         } while (valTelefone != true);
                         
-                        // Usu·rio
+                        // Usu√°rio
                         //int ValChar;
                         bool contaUnica = false; // Serve como verificador de contas repetidas
                         do{
                             int rpConta = 0; // Serve como um contador (Se for maior ou igual a 2, o sistema vai considerar a conta como repetida)
                             system("cls");
-                            strcenter(line,"- CRIA«√O DE CONTA! -",32,false);
+                            strcenter(line,"- CRIA√á√ÉO DE CONTA! -",32,false);
                             printf("> Seu nome:     %s\n",PassUsers[cPassUsers][0]);
                             printf("> Telefone:     %s\n",PassUsers[cPassUsers][1]);
-                            printf("> Usu·rio:      ");
+                            printf("> Usu√°rio:      ");
                             gets(PassUsers[cPassUsers][2]);
                             fflush(stdin);
                             ValChar = ValInfo(PassUsers[cPassUsers][2][0],AlphaNums);
@@ -684,12 +677,12 @@ int main(){
                             }
                             if(rpConta == 2){
                                 contaUnica = false;
-                                strcenter(line,RED"- ERROR: USU¡RIO INDISPONÕVEL! -"RST,32,true);
+                                strcenter(line,RED"- ERROR: USU√ÅRIO INDISPON√çVEL! -"RST,32,true);
                                 Sleep(800);
                             }
                             else if(strcmp(PassUsers[cPassUsers][2]," ") == 0 || ValChar == 0){
                                 contaUnica = false;
-                                strcenter(line,RED"- ERROR: USU¡RIO INV¡LIDO! -"RST,32,true);
+                                strcenter(line,RED"- ERROR: USU√ÅRIO INV√ÅLIDO! -"RST,32,true);
                                 Sleep(800);
                             }
                             else{
@@ -700,10 +693,10 @@ int main(){
                         
                         do{
                             system("cls");
-                            strcenter(line,"- CRIA«√O DE CONTA! -",32,false);
+                            strcenter(line,"- CRIA√á√ÉO DE CONTA! -",32,false);
                             printf("> Seu nome:     %s\n",PassUsers[cPassUsers][0]);
                             printf("> Telefone:     %s\n",PassUsers[cPassUsers][1]);
-                            printf("> Usu·rio:      %s\n",PassUsers[cPassUsers][2]);
+                            printf("> Usu√°rio:      %s\n",PassUsers[cPassUsers][2]);
                             printf("> Senha:        ");
                             gets(PassUsers[cPassUsers][3]);
                             fflush(stdin);
@@ -713,10 +706,10 @@ int main(){
                         
                         do{
                             system("cls");
-                            strcenter(line,"- CRIA«√O DE CONTA! -",32,false);
+                            strcenter(line,"- CRIA√á√ÉO DE CONTA! -",32,false);
                             printf("> Seu nome:     %s\n",PassUsers[cPassUsers][0]);
                             printf("> Telefone:     %s\n",PassUsers[cPassUsers][1]);
-                            printf("> Usu·rio:      %s\n",PassUsers[cPassUsers][2]);
+                            printf("> Usu√°rio:      %s\n",PassUsers[cPassUsers][2]);
                             printf("> Senha:        %s\n",PassUsers[cPassUsers][3]);
                             printf("> Sua cidade:   ");
                             gets(Enderecos[cPassUsers][0]);
@@ -725,13 +718,13 @@ int main(){
                         } while (strlen(Enderecos[cPassUsers][0]) == 0 || ValChar == 0);
                         do{
                             system("cls");
-                            strcenter(line,"- CRIA«√O DE CONTA! -",32,false);
+                            strcenter(line,"- CRIA√á√ÉO DE CONTA! -",32,false);
                             printf("> Seu nome:     %s\n",PassUsers[cPassUsers][0]);
                             printf("> Telefone:     %s\n",PassUsers[cPassUsers][1]);
-                            printf("> Usu·rio:      %s\n",PassUsers[cPassUsers][2]);
+                            printf("> Usu√°rio:      %s\n",PassUsers[cPassUsers][2]);
                             printf("> Senha:        %s\n",PassUsers[cPassUsers][3]);
                             printf("> Sua cidade:   %s\n",Enderecos[cPassUsers][0]);
-                            printf("> Seu endereÁo: ");
+                            printf("> Seu endere√ßo: ");
                             gets(Enderecos[cPassUsers][1]);
                             fflush(stdin);
                             ValChar = ValInfo(Enderecos[cPassUsers][1][0],AlphaNums);
@@ -758,7 +751,7 @@ int main(){
                         int NavOpt, ValChar;
                         switch (option) {
                             case 1:
-                                strcenter(line,"InformaÁ„o das lojas",32,false);
+                                strcenter(line,"Informa√ß√£o das lojas",32,false);
                                 for (i = 0; i < 3; i++){
                                     printf("> %s\n",lojas.Cidades[i]);
                                     printf("Endereco:      %s\n",lojas.Enderecos[i]);
@@ -780,19 +773,19 @@ int main(){
                             case 4:
                                 do{
                                     system("cls");
-                                    strcenter(line,"- InformaÁıes de acesso! -",32,false);
+                                    strcenter(line,"- Informa√ß√µes de acesso! -",32,false);
                                     printf("1. Acesso de Admin:\n");
-                                    printf("> Usu·rio: %s\n",AdmUser);
+                                    printf("> Usu√°rio: %s\n",AdmUser);
                                     printf("> Senha:   %s\n\n",AdmSenha);
-                                    printf("2. Acesso de funcion·rio:\n");
-                                    printf("> Usu·rio: %s\n",FuncUser);
+                                    printf("2. Acesso de funcion√°rio:\n");
+                                    printf("> Usu√°rio: %s\n",FuncUser);
                                     printf("> Senha:   %s\n\n",FuncSenha);
                                     printf("3. Voltar\n");
                                     printf("%s\n> ",line);
                                     NavOpt = getch();
                                     printf("%c",NavOpt);
                                     Sleep(20);
-                                    if(NavOpt >= 48 && NavOpt <= 57){ // 0 a 9 s„o respectivamente as teclas de n˙mero 48 a 57 do teclado
+                                    if(NavOpt >= 48 && NavOpt <= 57){ // 0 a 9 s√£o respectivamente as teclas de n√∫mero 48 a 57 do teclado
                                         NavOpt = NavOpt%48;
                                     }
 
@@ -800,12 +793,12 @@ int main(){
                                         ValChar = 0;
                                         do{
                                             system("cls");
-                                            strcenter(line,"- ModifcaÁ„o de conta de administrador -",32,false);
-                                            printf("> Novo usu·rio: ");
+                                            strcenter(line,"- Modifca√ß√£o de conta de administrador -",32,false);
+                                            printf("> Novo usu√°rio: ");
                                             scanf("%s",&AdmUser);
                                             ValChar = ValInfo(AdmUser[0],AlphaNums);
                                             if(ValChar == 0){
-                                                strcenter(line,RED"- ERROR: USU¡RIO INV¡LIDO -"RST,32,true);
+                                                strcenter(line,RED"- ERROR: USU√ÅRIO INV√ÅLIDO -"RST,32,true);
                                                 Sleep(800);
                                             }
                                         } while (ValChar == 0);
@@ -813,13 +806,13 @@ int main(){
                                         ValChar = 0;
                                         do{
                                             system("cls");
-                                            strcenter(line,"- ModifcaÁ„o de conta de administrador -",32,false);
-                                            printf("> Novo usu·rio: %s\n",AdmUser);
+                                            strcenter(line,"- Modifca√ß√£o de conta de administrador -",32,false);
+                                            printf("> Novo usu√°rio: %s\n",AdmUser);
                                             printf("> Nova senha:   ");
                                             scanf("%s",&AdmSenha);
                                             ValChar = ValInfo(AdmSenha[0],AlphaNums);
                                             if(ValChar == 0){
-                                                strcenter(line,RED"- ERROR: SENHA INV¡LIDA -"RST,32,true);
+                                                strcenter(line,RED"- ERROR: SENHA INV√ÅLIDA -"RST,32,true);
                                                 Sleep(800);
                                             }
                                         } while (ValChar == 0);
@@ -830,12 +823,12 @@ int main(){
                                         ValChar = 0;
                                         do{
                                             system("cls");
-                                            strcenter(line,"- ModifcaÁ„o de conta de funcion·rio -",32,false);
-                                            printf("> Novo usu·rio: ");
+                                            strcenter(line,"- Modifca√ß√£o de conta de funcion√°rio -",32,false);
+                                            printf("> Novo usu√°rio: ");
                                             scanf("%s",&FuncUser);
                                             ValChar = ValInfo(FuncUser[0],AlphaNums);
                                             if(ValChar == 0){
-                                                strcenter(line,RED"- ERROR: USU¡RIO INV¡LIDO -"RST,32,true);
+                                                strcenter(line,RED"- ERROR: USU√ÅRIO INV√ÅLIDO -"RST,32,true);
                                                 Sleep(800);
                                             }
                                         } while (ValChar == 0);
@@ -843,13 +836,13 @@ int main(){
                                         ValChar = 0;
                                         do{
                                             system("cls");
-                                            strcenter(line,"- ModifcaÁ„o de conta de funcion·rio -",32,false);
-                                            printf("> Novo usu·rio: %s\n",FuncUser);
+                                            strcenter(line,"- Modifca√ß√£o de conta de funcion√°rio -",32,false);
+                                            printf("> Novo usu√°rio: %s\n",FuncUser);
                                             printf("> Nova senha:   ");
                                             scanf("%s",&FuncSenha);
                                             ValChar = ValInfo(FuncSenha[0],AlphaNums);
                                             if(ValChar == 0){
-                                                strcenter(line,RED"- ERROR: SENHA INV¡LIDA -"RST,32,true);
+                                                strcenter(line,RED"- ERROR: SENHA INV√ÅLIDA -"RST,32,true);
                                                 Sleep(800);
                                             }
                                         } while (ValChar == 0);
@@ -860,7 +853,7 @@ int main(){
                                         break;
                                     }
                                     else{
-                                        strcenter(line,RED"- ERROR: OP«√O INV¡LIDA! -"RST,32,true);
+                                        strcenter(line,RED"- ERROR: OP√á√ÉO INV√ÅLIDA! -"RST,32,true);
                                         Sleep(800);
                                     }
                                 } while (NavOpt != 3 && NavOpt != 27);
@@ -877,7 +870,7 @@ int main(){
                     user_atual.logado = true;
                 }
                 
-                // VerificaÁ„o de login para ADM e USER
+                // Verifica√ß√£o de login para ADM e USER
                 else if(cpmUser == 0 && cmpSenha != 0 && contaReal == true || senhaErrada == true){
                     strcenter(line,RED"- Senha Incorreta! -"RST,32,true);
                     Sleep(600);
@@ -909,7 +902,7 @@ int main(){
                                         printf("%c\n",CodePizza);
                                         CodePizza %= 65;
                                     }
-                                    else if(CodePizza >= 97 && CodePizza <= 122){ // Letra min˙scula
+                                    else if(CodePizza >= 97 && CodePizza <= 122){ // Letra min√∫scula
                                         printf("%c\n",toupper(CodePizza));
                                         CodePizza %= 97;
                                     }
@@ -947,7 +940,7 @@ int main(){
                                         int quantidade = 0;
                                         do{
                                             viewTamanhosPizza(line2,pizzas.precos,pizzas.tamanhos,pizzas.geral[(CodePizza)][0]);
-                                            printf("Quantas pizzas %s (%s) ser„o pedidas?\n> ",pizzas.geral[(CodePizza)][0],pizzas.tamanhos[select-1]);
+                                            printf("Quantas pizzas %s (%s) ser√£o pedidas?\n> ",pizzas.geral[(CodePizza)][0],pizzas.tamanhos[select-1]);
                                             scanf("%i",&quantidade);
                                             fflush(stdin);
                                             printf("%s\n",line2);
@@ -968,7 +961,7 @@ int main(){
                             }
                             
                             else if(option == 2){
-                                strcenter(line,"Revis„o do pedido",32,false);
+                                strcenter(line,"Revis√£o do pedido",32,false);
                                 for(i = 0; i < user_atual.Contador; i++){
                                     printf("> %s (%i %s)\n", user_atual.Pizzas[i],user_atual.quantidade[i],user_atual.Tamanhos[i]);
                                 }
@@ -977,7 +970,7 @@ int main(){
                             }
                             
                             else if(option == 3){
-                                strcenter(line,"- LocalizaÁ„o das pizzarias -",32,false);
+                                strcenter(line,"- Localiza√ß√£o das pizzarias -",32,false);
                                 for(i = 0; i < 3; i++){
                                     printf("> %s: %s\n",lojas.Cidades[i],lojas.Enderecos[i]);
                                 }
@@ -987,27 +980,27 @@ int main(){
 
                             else if(option == 4){
                                 int ValChar;
-                                strcenter(line,"- Cadastro de endereÁo -",32,false);
+                                strcenter(line,"- Cadastro de endere√ßo -",32,false);
                                 printf("Sua cidade:   %s\n",user_atual.endereco[0]);
-                                printf("Seu endereÁo: %s\n",user_atual.endereco[1]);
+                                printf("Seu endere√ßo: %s\n",user_atual.endereco[1]);
                                 printf("%s\n",line);
                                 char SN;
-                                printf("Deseja mudar seu endereÁo?\n> ");
+                                printf("Deseja mudar seu endere√ßo?\n> ");
                                 SN = getch();
                                 Sleep(20);
                                 printf("%c\n",SN);
                                 if(SN == 'S' || SN == 's'){
                                     do{
                                         system("cls");
-                                        strcenter(line,"- Cadastro de endereÁo -",32,false);
+                                        strcenter(line,"- Cadastro de endere√ßo -",32,false);
                                         printf("Digite sua cidade\n> ");
                                         gets(user_atual.endereco[0]);
                                         ValChar = ValInfo(user_atual.endereco[0][0],AlphaNums);
                                     } while (strlen(user_atual.endereco[0]) == 0 || ValChar == 0);
                                     do{
                                         system("cls");
-                                        strcenter(line,"- Cadastro de endereÁo -",32,false);
-                                        printf("Digite seu endereÁo\n> ");
+                                        strcenter(line,"- Cadastro de endere√ßo -",32,false);
+                                        printf("Digite seu endere√ßo\n> ");
                                         gets(user_atual.endereco[1]);
                                         ValChar = ValInfo(user_atual.endereco[1][0],AlphaNums);
                                     } while (strlen(user_atual.endereco[1]) == 0 || ValChar == 0);
@@ -1018,15 +1011,15 @@ int main(){
 
                             else if(option == 5){
                                 int ValChar;
-                                strcenter(line,"- InformaÁıes da sua conta -",32,false);
+                                strcenter(line,"- Informa√ß√µes da sua conta -",32,false);
                                 printf("> Seu nome: %s\n",user_atual.nome);
-                                printf("> EndereÁo: %s (%s)\n",user_atual.endereco[1], user_atual.endereco[0]);
+                                printf("> Endere√ßo: %s (%s)\n",user_atual.endereco[1], user_atual.endereco[0]);
                                 printf("> Telefone: %s\n",user_atual.telefone);
-                                printf("> Usu·rio:  %s\n",user_atual.usuario);
+                                printf("> Usu√°rio:  %s\n",user_atual.usuario);
                                 printf("> Senha:    %s\n",user_atual.senha);
                                 printf("%s\n",line);
                                 char SN;
-                                printf("Dseja mudar alguma informaÁ„o?\n> ");
+                                printf("Dseja mudar alguma informa√ß√£o?\n> ");
                                 SN = getch();
                                 Sleep(20);
                                 printf("%c\n",SN);
@@ -1042,7 +1035,7 @@ int main(){
                                             char newName[100];
                                             do{
                                                 system("cls");
-                                                strcenter(line,"- InformaÁıes da sua conta -",32,false);
+                                                strcenter(line,"- Informa√ß√µes da sua conta -",32,false);
                                                 printf("> Nome Antigo: %s\n",user_atual.nome);
                                                 printf("> Nome novo: ");
                                                 gets(newName);
@@ -1061,7 +1054,7 @@ int main(){
                                                     Sleep(600);
                                                 }
                                                 else{
-                                                    strcenter(line,RED"- ERROR: NOME INV¡LIDO -"RST,32,true);
+                                                    strcenter(line,RED"- ERROR: NOME INV√ÅLIDO -"RST,32,true);
                                                     Sleep(600);
                                                 }
                                             } while (strlen(newName) == 0 || ValChar == 0);
@@ -1073,7 +1066,7 @@ int main(){
                                             char newPhone[100];
                                             do{
                                                 system("cls");
-                                                strcenter(line,"- InformaÁıes da sua conta -",32,false);
+                                                strcenter(line,"- Informa√ß√µes da sua conta -",32,false);
                                                 printf("> Telefone antigo: %s",user_atual.telefone);
                                                 for(i = 0; i < strlen(user_atual.endereco[0]); i++){
                                                     printf("\b");
@@ -1083,7 +1076,7 @@ int main(){
                                                 gets(newPhone);
                                                 int Counts = 0;
                                                 int j;
-                                                // Loop para verificar existÍncia de n˙meros (SÛ acontece se o tamanho for exatamente igual a 11 (DDD + Telefone))
+                                                // Loop para verificar exist√™ncia de n√∫meros (S√≥ acontece se o tamanho for exatamente igual a 11 (DDD + Telefone))
                                                 if(strlen(newPhone) == 11){
                                                     for(i = 0; i < 11; i++){
                                                         for(j = 0; j < 10; j++){
@@ -1101,13 +1094,13 @@ int main(){
                                                     fflush(stdin);
                                                 }
                                                 else{
-                                                    // Mensagem de erro para n˙meros de telefones inv·lidos
-                                                    strcenter(line,RED"- ERROR: Telefone inv·lido -"RST,32,true);
+                                                    // Mensagem de erro para n√∫meros de telefones inv√°lidos
+                                                    strcenter(line,RED"- ERROR: Telefone inv√°lido -"RST,32,true);
                                                     Sleep(600);
                                                 }
                                             } while (valTelefone != true);
                                             system("cls");
-                                            strcenter(line,"- InformaÁıes da sua conta -",32,false);
+                                            strcenter(line,"- Informa√ß√µes da sua conta -",32,false);
                                             printf("> Telefone novo: %s\n",user_atual.telefone);
                                             strcenter(line,GRN"- TELEFONE TROCADO COM SUCESSO -"RST,32,true);
                                             Sleep(1000);
@@ -1118,9 +1111,9 @@ int main(){
                                             char newUser[100];
                                             do{
                                                 system("cls");
-                                                strcenter(line,"- InformaÁıes da sua conta -",32,false);
-                                                printf("> Usu·rio Antigo: %s\n",user_atual.usuario);
-                                                printf("> Usu·rio novo:   ");
+                                                strcenter(line,"- Informa√ß√µes da sua conta -",32,false);
+                                                printf("> Usu√°rio Antigo: %s\n",user_atual.usuario);
+                                                printf("> Usu√°rio novo:   ");
                                                 gets(newUser);
                                                 ValChar = ValInfo(newUser[0],AlphaNums);
                                                 if(strlen(newUser) > 0 && ValChar != 0){
@@ -1128,7 +1121,7 @@ int main(){
                                                     fflush(stdin);
                                                     strcpy(PassUsers[user_atual.ID][2],newUser);
                                                     fflush(stdin);
-                                                    strcenter(line,GRN"- Usu·rio trocado com sucesso -"RST,32,true);
+                                                    strcenter(line,GRN"- Usu√°rio trocado com sucesso -"RST,32,true);
                                                     Sleep(600);
                                                     break;
                                                 }
@@ -1137,14 +1130,14 @@ int main(){
                                                     Sleep(600);
                                                 }
                                                 else{
-                                                    strcenter(line,RED"- ERROR: Usu·rio INV¡LIDO -"RST,32,true);
+                                                    strcenter(line,RED"- ERROR: Usu√°rio INV√ÅLIDO -"RST,32,true);
                                                     Sleep(600);
                                                 }
                                             } while (strlen(newUser) == 0 || ValChar == 0);
                                             system("cls");
-                                            strcenter(line,"- InformaÁıes da sua conta -",32,false);
-                                            printf("> Usu·rio novo: %s\n",user_atual.usuario);
-                                            strcenter(line,GRN"- USU¡RIO TROCADO COM SUCESSO -"RST,32,true);
+                                            strcenter(line,"- Informa√ß√µes da sua conta -",32,false);
+                                            printf("> Usu√°rio novo: %s\n",user_atual.usuario);
+                                            strcenter(line,GRN"- USU√ÅRIO TROCADO COM SUCESSO -"RST,32,true);
                                             Sleep(1000);
                                         }
                                         
@@ -1153,7 +1146,7 @@ int main(){
                                             char newPass[100];
                                             do{
                                                 system("cls");
-                                                strcenter(line,"- InformaÁıes da sua conta -",32,false);
+                                                strcenter(line,"- Informa√ß√µes da sua conta -",32,false);
                                                 printf("> Senha Antiga: %s\n",user_atual.senha);
                                                 printf("> Senha nova:   ");
                                                 gets(newPass);
@@ -1172,12 +1165,12 @@ int main(){
                                                     Sleep(600);
                                                 }
                                                 else if(strlen(newPass) == 0 || ValChar == 0){
-                                                    strcenter(line,RED"- ERROR: SENHA INV¡LIDO -"RST,32,true);
+                                                    strcenter(line,RED"- ERROR: SENHA INV√ÅLIDO -"RST,32,true);
                                                     Sleep(600);
                                                 }
                                             } while (strlen(newPass) == 0 || ValChar == 0);
                                             system("cls");
-                                            strcenter(line,"- InformaÁıes da sua conta -",32,false);
+                                            strcenter(line,"- Informa√ß√µes da sua conta -",32,false);
                                             printf("> Senha nova: %s\n",user_atual.senha);
                                             strcenter(line,GRN"- SENHA TROCADA COM SUCESSO -"RST,32,true);
                                             Sleep(1000);
@@ -1188,7 +1181,7 @@ int main(){
                                         }
                                         
                                         else{
-                                            strcenter(line,RED"ERROR: OP«√O INV¡LIDA"RST,32,true);
+                                            strcenter(line,RED"ERROR: OP√á√ÉO INV√ÅLIDA"RST,32,true);
                                             Sleep(750);
                                         }
                                     } while (InfoOpt != '5');
@@ -1201,7 +1194,7 @@ int main(){
                                 int selectEntrega;
                                 do{
                                     system("cls");
-                                    strcenter(line,"CONFIRMA«√O DE PEDIDO",32,false);
+                                    strcenter(line,"CONFIRMA√á√ÉO DE PEDIDO",32,false);
                                     printf("Resumo do pedido:\n");
                                     for(i = 0; i < user_atual.Contador; i++){
                                         printf("> %s (%i %s)\n", user_atual.Pizzas[i],user_atual.quantidade[i],user_atual.Tamanhos[i]);
@@ -1210,7 +1203,7 @@ int main(){
                                     printf("%s\n",line);
                                     printf("1. Para retirada\n");
                                     printf("2. Para entrega\n");
-                                    printf("Escolha uma opÁ„o\n> ");
+                                    printf("Escolha uma op√ß√£o\n> ");
                                     selectEntrega = getch();
                                     Sleep(20);
                                     if(selectEntrega >= 48 && selectEntrega <= 57){
@@ -1222,10 +1215,10 @@ int main(){
                                     int selectLoja;
                                     do{
                                         system("cls");
-                                        strcenter(line,"Lojas disponÌveis para retirada!",32,false);
+                                        strcenter(line,"Lojas dispon√≠veis para retirada!",32,false);
                                         for(i = 0; i < 3; i++){
                                             printf("%i. Pizzaria de %s\n",i+1,lojas.Cidades[i]);
-                                            printf("EndereÁo: %s\n\n",lojas.Enderecos[i]);
+                                            printf("Endere√ßo: %s\n\n",lojas.Enderecos[i]);
                                         }
                                         printf("%s\n",line);
                                         printf("Escolha uma das pizzarias\n> ");
@@ -1245,10 +1238,10 @@ int main(){
 
                                 else if(selectEntrega == 2){
                                     printf("\n%s\n",line);
-                                    printf("EndereÁo de entrega:\n");
+                                    printf("Endere√ßo de entrega:\n");
                                     printf("> Cidade:   %s\n",user_atual.endereco[0]);
-                                    printf("> EndereÁo: %s\n",user_atual.endereco[1]);
-                                    strcpy(user_atual.retirada,"EndereÁo do cliente");
+                                    printf("> Endere√ßo: %s\n",user_atual.endereco[1]);
+                                    strcpy(user_atual.retirada,"Endere√ßo do cliente");
                                     printf("%s\n",line);
                                     system("PAUSE");
                                 }
@@ -1270,7 +1263,7 @@ int main(){
                     do{
                         viewMenu(FuncMenu,line,32);
                         funcNav = getch();
-                        if(funcNav >= 48 && funcNav <= 57){ // 0 a 9 s„o respectivamente as teclas de n˙mero 48 a 57 do teclado
+                        if(funcNav >= 48 && funcNav <= 57){ // 0 a 9 s√£o respectivamente as teclas de n√∫mero 48 a 57 do teclado
                             funcNav = funcNav%48;
                         }
                         printf("%i\n",funcNav);
@@ -1286,11 +1279,11 @@ int main(){
                             viewPedidos(logins,line);
                         }
                         else if(funcNav == 4){
-                            strcenter(line,"- InformaÁıes da conta -",32,false);
+                            strcenter(line,"- Informa√ß√µes da conta -",32,false);
                             printf("> Nome:  %s\n",FuncNome);
-                            printf("Usu·rio: %s\n",FuncUser);
+                            printf("Usu√°rio: %s\n",FuncUser);
                             printf("Senha:   %s\n",FuncSenha);
-                            printf("Sal·rio: R$ %.2f\n",FuncSal);
+                            printf("Sal√°rio: R$ %.2f\n",FuncSal);
                             printf("Horas:   %ih\n",FuncHoras);
                             printf("%s\n",line);
                             system("pause");
