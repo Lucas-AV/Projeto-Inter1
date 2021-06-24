@@ -76,7 +76,7 @@ struct User{
     char *Pizzas[100], *Tamanhos[100];  // Informaçãos das pizzas pedidas pelo cliente
     char usuario[100], senha[100], nome[100], telefone[100], retirada[100]; // Informações do cliente
     char endereco[2][100];  // Endereço do cliente (Cidade + Endereço)
-    int *quantidade[100];   // Quantidade das pizzas do cliente por pedido
+    int quantidade[100];   // Quantidade das pizzas do cliente por pedido
     int ID;         // Usado para verificar a existência da conta
     int Contador;   // Utilizado para interagir com Pizzas,Tamanhos e quantidade;
     bool logado;    // Utilizado para validação de login (Atualmente só funciona com Admin)
@@ -298,7 +298,7 @@ int main(){
 
     lojas.Lucros[0] = rand() % 5000 + 10000;
     lojas.Gastos[0] = rand() % 5000 + 7500;
-    lojas.Renda[0] = lojas.Renda[0] + lojas.Gastos[0];
+    lojas.Renda[0] = lojas.Lucros[0] + lojas.Gastos[0];
     lojas.Cidades[0] = "Águas Claras Norte";
     lojas.Enderecos[0] = "Rua 10 Lote 3";
     lojas.Salas[0] = rand() % 3 + 2;
@@ -306,7 +306,7 @@ int main(){
 
     lojas.Lucros[1] = rand() % 5000 + 10000;
     lojas.Gastos[1] = rand() % 5000 + 7500;
-    lojas.Renda[1] = lojas.Renda[1] + lojas.Gastos[1];
+    lojas.Renda[1] = lojas.Lucros[1] + lojas.Gastos[1];
     lojas.Cidades[1] = "Taguatinga Norte";
     lojas.Enderecos[1] = "CND 14 Lote 10";
     lojas.Salas[1] = rand() % 3 + 2;
@@ -314,7 +314,7 @@ int main(){
 
     lojas.Lucros[2] = rand() % 5000 + 10000;
     lojas.Gastos[2] = rand() % 5000 + 7500;
-    lojas.Renda[2] = lojas.Renda[2] + lojas.Gastos[2];
+    lojas.Renda[2] = lojas.Lucros[2] + lojas.Gastos[2];
     lojas.Cidades[2] = "Vicente Pires";
     lojas.Enderecos[2] = "Rua 5 Lote 28";
     lojas.Salas[2] = rand() % 3 + 2;
