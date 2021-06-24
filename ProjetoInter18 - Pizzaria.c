@@ -1,11 +1,4 @@
 // github: LucasV75
-/*
-Feito:
-1. Opção de troca de acessos (Usuário e senha) para funcionários e administradores
-Pendente:
-1. Informação de funcionário (Geral similar a cliente)
-2. Salário do funcionário
-*/
 #include <stdio.h>   // Inputs e outputs em C
 #include <stdlib.h>  // Padrão do C
 #include <locale.h>  // Configura o idioma do terminal
