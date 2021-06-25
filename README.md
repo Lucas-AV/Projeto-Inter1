@@ -6,11 +6,11 @@
 | CSS | Estilização do site |
 | JS | Animações e funcionalidades |
 | C | Linguagem utilizada para recriar o site em um .exe |
-# GRUPO
+## GRUPO
 | Integrante | Função |
 | --------- | --------- |
 | [Lucas Alves Vilela](https://github.com/LucasV75) | Programação em C, Engenharia de software |
 | [Carlos Eduardo Souza](https://github.com/Carlos-E-Souza) | Programação Web, Modelagem de banco de dados |
 | [Heitor Braz Reino](https://github.com/Totz1) | Sistemas Computacionais |
-# Observações
+## Observações
   O código em .c foi desenvolvido no Visual Studio Code mas disponibilizei uma segunda versão para ser rodada no Dev-C++.
