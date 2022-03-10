@@ -9,7 +9,7 @@
 ## GRUPO
 | Integrante | Função |
 | --------- | --------- |
-| [Lucas Alves Vilela](https://github.com/LucasV75) | Programação em C, Engenharia de software |
+| [Lucas Alves Vilela](https://github.com/Lucas-AV) | Programação em C, Engenharia de software |
 | [Carlos Eduardo Souza](https://github.com/Carlos-E-Souza) | Programação Web, Modelagem de banco de dados |
 | [Heitor Braz Reino](https://github.com/Totz1) | Sistemas Computacionais |
 ## Observações
